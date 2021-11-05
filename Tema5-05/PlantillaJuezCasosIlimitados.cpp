@@ -11,17 +11,13 @@
 
 // función que resuelve el problema
 void resolver(queue<int>& cola) {
-	int dimension = cola.size();
-	cola.duplicar();
+	cola.invertir();
 	cola.print();
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
 bool resuelveCaso() {
-	// leer los datos de la entrada
-	
-
 	bool reading = true;
 	queue<int> cola;
 	while (reading) {
@@ -29,7 +25,7 @@ bool resuelveCaso() {
 		std::cin >> n;
 		if (!std::cin)
 			return false;
- 		if (n == 0)
+		if (n == 0)
 			reading = false;
 		else {
 			cola.push(n);
@@ -50,7 +46,8 @@ int main() {
 #endif 
 
 
-	while (resuelveCaso());
+	while (resuelveCaso())
+		;
 
 
 	// Para restablecer entrada. Comentar para acepta el reto
