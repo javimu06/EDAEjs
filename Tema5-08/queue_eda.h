@@ -166,6 +166,37 @@ public:
 				aux = aux->sig;
 		}
 	}
+
+	void colar(int pringao, queue<int>& chavales) {
+		Nodo* aux = prim;
+		Nodo* pringaoNode = nullptr;
+		bool searching = true;
+		//Buscamos el nodo del pringao y lo guardamos
+		while (searching && aux != nullptr) {
+			if (aux->elem == pringao) {
+				searching = false;
+				pringaoNode = aux;
+			}
+			aux = aux->sig;
+		}
+		if (!searching) {
+			//Conectamos el final de chavales con la continuacion del pringao
+			if (pringaoNode->sig != nullptr) {
+				chavales.ult->sig = pringaoNode->sig;
+			}
+			else {
+				ult->sig = chavales.ult;
+				ult = chavales.ult;
+			}
+			//Enlazamos pringao con el principio de chavales, donde empiezan a colarse
+			pringaoNode->sig = chavales.prim;
+		}
+
+		//Borro chavales
+		chavales.nelems = 0;
+		chavales.prim = nullptr;
+		chavales.ult = nullptr;
+	}
 protected:
 
 	void libera() {
