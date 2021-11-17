@@ -5,44 +5,34 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <list>
+#include "list_eda.h"
+
 
 
 // función que resuelve el problema
-void resolver(std::list<unsigned long int>& listaDesordenada) {
-	unsigned long int max = *listaDesordenada.begin();
-	std::cout << max;
-	for (auto it = ++listaDesordenada.begin(); it != listaDesordenada.end(); ++it) {
-		//Si el valor del nodo de la lista es mayor, se cambia el nMaximo
-		//Si el valor del nodo es menor que el anterior, se saca de la lista porque no esta ordenado
-		if (max <= (*it)) {
-			max = (*it);
-			std::cout << " " << (*it);
-		}
-		else {
-			it = listaDesordenada.erase(it);
-			--it;
-		}
-	}
-	std::cout << "\n";
+void resolver(list<int>& elems, const int& elim) {
+	elems.print();
+	elems.eliminaElems(elim);
+	elems.print();
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
 void resuelveCaso() {
 	// leer los datos de la entrada
-	std::list<unsigned long int> listaDesordenada;
-	int num;
-	std::cin >> num;
-	while (num != -1) {
-		listaDesordenada.push_back(num);
-		std::cin >> num;
+	list<int> elems;
+	int x;
+	std::cin >> x;
+	while (x != -1) {
+		elems.push_back(x);
+		std::cin >> x;
 	}
+	int elimina;
+	std::cin >> elimina;
+
 	// escribir sol
-	if (listaDesordenada.size() > 0)
-		resolver(listaDesordenada);
-	else
-		std::cout << "\n";
+	resolver(elems, elimina);
+
 }
 
 int main() {
