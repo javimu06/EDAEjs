@@ -233,6 +233,20 @@ public:
 			}
 		}
 	}
+
+	bool compruebaGenealogico(Link nodo, int& camino) {
+		if (nodo != nullptr) {
+			if (nodo->left->elem != -1 && nodo->elem >= nodo->left->elem + 18) {
+				return compruebaGenealogico(nodo->left, camino + 1);
+			}
+			else return false;
+			if (nodo->right->elem != -1 && nodo->elem >= nodo->right->elem + 18) {
+				return compruebaGenealogico(nodo->right, camino + 1);
+			}
+			else return false;
+			return true;
+		}
+	}
 protected:
 	static void preorder(Link a, std::vector<T>& pre) {
 		if (a != nullptr) {
