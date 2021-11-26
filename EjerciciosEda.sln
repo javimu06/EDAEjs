@@ -59,6 +59,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tema6-10", "Tema6-10\Tema6-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tema6-07", "Tema6-07\Tema6-07.vcxproj", "{15A14824-C94E-4ECC-A1BA-3D9D8724115E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tema6-12", "Tema6-12\Tema6-12.vcxproj", "{BFA6B448-0158-4C23-B717-72A2857FB3A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -291,6 +293,14 @@ Global
 		{15A14824-C94E-4ECC-A1BA-3D9D8724115E}.Release|x64.Build.0 = Release|x64
 		{15A14824-C94E-4ECC-A1BA-3D9D8724115E}.Release|x86.ActiveCfg = Release|Win32
 		{15A14824-C94E-4ECC-A1BA-3D9D8724115E}.Release|x86.Build.0 = Release|Win32
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Debug|x64.ActiveCfg = Debug|x64
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Debug|x64.Build.0 = Debug|x64
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Debug|x86.ActiveCfg = Debug|Win32
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Debug|x86.Build.0 = Debug|Win32
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Release|x64.ActiveCfg = Release|x64
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Release|x64.Build.0 = Release|x64
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Release|x86.ActiveCfg = Release|Win32
+		{BFA6B448-0158-4C23-B717-72A2857FB3A7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
