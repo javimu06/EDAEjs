@@ -31,9 +31,12 @@ int recorreNavegable(const bintree<int>& arb, int& nCaminos) {
 			//Calculo si el tramo es navegable
 			if (nAgua >= 3)
 				nCaminos++;
+
+			//El enunciado de shandokan dice que el afluente no puede ser negativo si la presa supera el caudal
+			if (nAgua < 0)
+				nAgua = 0;
 			return nAgua;
 		}
-
 	}
 	//Si el nodo es vacio devuelvo -1, asi cuento el numero de nodos que confluyen
 	else return -1;
@@ -46,7 +49,6 @@ int calculaNavegable(const bintree<int>& arb) {
 	if (ultimoCamnAgua >= 3)
 		return nCaminosNavegables - 1;
 	return nCaminosNavegables;
-
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
