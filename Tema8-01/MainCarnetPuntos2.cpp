@@ -8,64 +8,86 @@
 
 using namespace std;
 
-using DNI = string;
-using PUNTOS = int;
-using carnet_puntos = map<DNI, PUNTOS>;
+class carnet_puntos {
+private:
+	using DNI = string;
+	using PUNTOS = int;
+	using ListaCarnets = map<DNI, PUNTOS>;
+	ListaCarnets listaCarnets_;
+	vector<int> conPuntos;
 
-void nuevo(&DNI dni) {
+public:
+	carnet_puntos() : conPuntos(15 + 1, 0) {}
 
-}
+	void nuevo(string dni) {
+		if (listaCarnets_.count(dni) == 0)
+		{
+			listaCarnets_[dni] = 15;
+			conPuntos[15]++;
+		}
+		else throw domain_error("Conductor duplicado");
+	}
+
+	void quitar(string dni, int puntos) {
+		if (listaCarnets_.count(dni) != 0) {
+			conPuntos[listaCarnets_[dni]]--;
+			listaCarnets_[dni] -= puntos;
+			if (listaCarnets_[dni] < 0) listaCarnets_[dni] = 0;
+			conPuntos[listaCarnets_[dni]]++;
+		}
+		else throw domain_error("Conductor inexistente");
+	}
+
+	int consultar(string dni) {
+		if (listaCarnets_.count(dni) != 0) return listaCarnets_[dni];
+		else throw domain_error("Conductor inexistente");
+	}
+
+	int cuantos_con_puntos(int puntos) {
+		if (puntos >= 0 && puntos <= 15)
+			return conPuntos[puntos];
+		else throw domain_error("Puntos no validos");
+	}
+};
+
 
 bool resuelveCaso() {
-	std::string orden, dni;
-	int punt;
-	std::cin >> orden;
-	if (!std::cin)
-		return false;
+	carnet_puntos carnet;
+	std::string operacion, dni;
+	int puntos;
 
-	carnet_puntos dgt;
+	std::cin >> operacion;
+	if (!std::cin) return false;
 
-	while (orden != "FIN") {
+	while (operacion != "FIN") {
 		try {
-			if (orden == "nuevo") {
-				cin >> dni;
-				dgt.nuevo(dni);
+			if (operacion == "nuevo") {
+				std::cin >> dni;
+				carnet.nuevo(dni);
 			}
-			else if (orden == "quitar") {
-				cin >> dni >> punt;
-				dgt.quitar(dni, punt);
+			else if (operacion == "cuantos_con_puntos") {
+				std::cin >> puntos;
+				int sol = carnet.cuantos_con_puntos(puntos);
+				std::cout << "Con " << puntos << " puntos hay " << sol << "\n";
 			}
-			else if (orden == "recuperar") {
-				cin >> dni >> punt;
-				dgt.recuperar(dni, punt);
+			else if (operacion == "quitar") {
+				std::cin >> dni >> puntos;
+				carnet.quitar(dni, puntos);
 			}
-			else if (orden == "consultar") {
-				cin >> dni;
-				punt = dgt.consultar(dni);
-				cout << "Puntos de " << dni << ": " << punt << '\n';
+			else if (operacion == "consultar") {
+				std::cin >> dni;
+				int sol = carnet.consultar(dni);
+				std::cout << "Puntos de " << dni << ": " << sol << "\n";
 			}
-			else if (orden == "cuantos_con_puntos") {
-				cin >> punt;
-				int cuantos = dgt.cuantos_con_puntos(punt);
-				cout << "Con " << punt << " puntos hay " << cuantos << '\n';
-			}
-			else if (orden == "lista_por_puntos") {
-				cin >> punt;
-				auto const& lista = dgt.lista_por_puntos(punt);
-				cout << "Tienen " << punt << " puntos:";
-				for (auto const& dni : lista)
-					cout << ' ' << dni;
-				cout << '\n';
-			}
-			else
-				cout << "OPERACION DESCONOCIDA\n";
 		}
 		catch (std::domain_error e) {
-			std::cout << "ERROR: " << e.what() << '\n';
+			std::cout << "ERROR: " << e.what() << "\n";
 		}
-		std::cin >> orden;
+		std::cin >> operacion;
 	}
+
 	std::cout << "---\n";
+
 	return true;
 }
 
