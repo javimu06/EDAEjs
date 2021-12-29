@@ -22,8 +22,8 @@ struct infoCancion {
 	duracion duracion_;
 	artista artista_;
 
-	//list<infoCancion>::const_iterator itReproducidas;
-	//list<infoCancion>::const_iterator itCola;
+	list<cancion>::const_iterator itReproducidas;
+	list<cancion>::const_iterator itCola;
 };
 
 class iPud {
@@ -39,9 +39,9 @@ public:
 
 		//Si la cancion no esta en el iPud anado su informacion
 		if (c == catalogoCanciones.cend()) {
-			catalogoCanciones[s] = { s, d, a };
+			catalogoCanciones[s] = { s, d, a ,cancionesReproducidas.cend(), cancionesCola.cend() };
 		}
-		else throw domain_error("addSong");
+		else throw invalid_argument("addSong");
 	}
 
 	void addToPlaylist(cancion s) {
@@ -50,10 +50,12 @@ public:
 		//Si la cancion no esta en el iPud
 		if (c != catalogoCanciones.cend()) {
 			//!Tengo que comprobar que la cancion no este a la cola
-			cancionesCola.push_back({ c->second.nombre_ });
-			totalTime_ += c->second.duracion_;
+			if ((*c).second.itCola == cancionesCola.cend()) {
+				cancionesCola.push_back({ c->second.nombre_ });
+				totalTime_ += c->second.duracion_;
+			}
 		}
-		else throw domain_error("addToPlaylist");
+		else throw invalid_argument("addToPlaylist");
 	}
 
 	cancion current() {
@@ -66,10 +68,12 @@ public:
 		auto it = catalogoCanciones.find(cancionesCola.front());
 		if (!cancionesCola.empty()) {
 			cancionesReproducidas.push_front(cancionesCola.front());
+			(*it).second.itReproducidas = cancionesReproducidas.begin();
 
 			totalTime_ -= (*it).second.duracion_;
 
 			cancionesCola.pop_front();
+			(*it).second.itCola = cancionesCola.cend();
 		}
 	}
 
@@ -87,12 +91,12 @@ public:
 	void deleteSong(cancion s) {
 		auto it = catalogoCanciones.find(s);
 		if (it != catalogoCanciones.cend()) {
-			/*if (it->second.itListaReproduccion != cancionesCola.cend()) {
-				totalTime_ -= it->second.duracion;
-				cancionesCola.erase(it->second.itListaReproduccion);
+			if (it->second.itCola != cancionesCola.cend()) {
+				totalTime_ -= (*it).second.duracion_;
+				cancionesCola.erase(it->second.itCola);
 			}
-			if (it->second.itListaReproducidas != cancionesReproducidas.cend())
-				cancionesReproducidas.erase(it->second.itListaReproducidas);*/
+			if (it->second.itReproducidas != cancionesReproducidas.cend())
+				cancionesReproducidas.erase(it->second.itReproducidas);
 
 			catalogoCanciones.erase(it);
 		}
