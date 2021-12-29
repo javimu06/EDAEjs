@@ -29,22 +29,24 @@ public:
 		catalogo[x].ejemplares_ += n;
 	}
 	void comprar(libro x) {
-		if (catalogo.count(x) == 0)
+		unordered_map<libro, infoLibro>::iterator it = catalogo.find(x);
+
+		if (it == catalogo.cend())
 			throw out_of_range("Libro no existente");
 
-		if (catalogo[x].ejemplares_ == 0)
+		if (it->second.ejemplares_ == 0)
 			throw out_of_range("No hay ejemplares");
 
 		//Actualizamos el mapa de ventas top
-		if (catalogo[x].ventas_ > 0)
-			listaTop[catalogo[x].ventas_].erase(catalogo[x].it);
+		if (it->second.ventas_ > 0)
+			listaTop[it->second.ventas_].erase(it->second.it);
 
-		catalogo[x].ejemplares_--;
-		catalogo[x].ventas_++;
+		it->second.ejemplares_--;
+		it->second.ventas_++;
 
 		//Actualizamos el mapa de ventas top
-		listaTop[catalogo[x].ventas_].push_front(x);
-		catalogo[x].it = listaTop[catalogo[x].ventas_].begin();
+		listaTop[it->second.ventas_].push_front(x);
+		it->second.it = listaTop[it->second.ventas_].begin();
 	}
 
 	bool estaLibro(libro x) {
@@ -53,17 +55,19 @@ public:
 
 	void elimLibro(libro x) {
 		//!No pongo las cosas a 0?
-		if (catalogo.count(x)) {
+		auto it = catalogo.find(x);
+		if (it != catalogo.cend()) {
 
-			if (catalogo[x].ventas_ > 0)
-				listaTop[catalogo[x].ventas_].erase(catalogo[x].it);
+			if (it->second.ventas_ > 0)
+				listaTop[it->second.ventas_].erase(it->second.it);
 
 			catalogo.erase(x);
 		}
 	}
 	int numEjemplares(libro x) {
-		if (catalogo.count(x)) {
-			return catalogo[x].ejemplares_;
+		auto it = catalogo.find(x);
+		if (it != catalogo.cend()) {
+			return it->second.ejemplares_;
 		}
 		else throw invalid_argument("Libro no existente");
 	}
@@ -71,8 +75,8 @@ public:
 	list<libro> top10() {
 		list<libro> aux;
 
-		for (auto a : listaTop) {
-			for (auto b = a.second.begin(); b != a.second.end(); b++) {
+		for (auto it = listaTop.begin(); it != listaTop.cend(); it++) {
+			for (auto b = it->second.begin(); b != it->second.end(); b++) {
 				if (aux.size() == 10)
 					return aux;
 				aux.push_back(*b);
