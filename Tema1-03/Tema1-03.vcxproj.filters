@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tema5-01-Parentesis Equilibrados-PlantillaJuezCasosIlimitados.cpp">
+    <ClCompile Include="Tema1-03-Esta bien dividido el vector-PlantillaJuezNumeroCasos.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

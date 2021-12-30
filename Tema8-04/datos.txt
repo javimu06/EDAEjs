@@ -14,3 +14,26 @@ FIN
 play
 current
 FIN
+addSong Una Artista 100
+addSong Dos Artista 123
+addSong Tres Artista 300
+addToPlaylist Una
+addToPlaylist Dos
+addToPlaylist Tres
+totalTime
+play
+totalTime
+play
+play
+recent 3
+addToPlaylist Una
+play
+recent 3
+recent 4
+play
+addSong Cuatro Artista 1000
+addToPlaylist Cuatro
+current
+play
+totalTime
+FIN

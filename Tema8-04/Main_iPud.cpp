@@ -47,11 +47,12 @@ public:
 	void addToPlaylist(cancion s) {
 		auto c = catalogoCanciones.find(s);
 
-		//Si la cancion no esta en el iPud
+		//Si la cancion esta en el iPud
 		if (c != catalogoCanciones.cend()) {
 			//!Tengo que comprobar que la cancion no este a la cola
 			if ((*c).second.itCola == cancionesCola.cend()) {
 				cancionesCola.push_back({ c->second.nombre_ });
+				(*c).second.itCola = --cancionesCola.cend();
 				totalTime_ += c->second.duracion_;
 			}
 		}
@@ -67,6 +68,10 @@ public:
 	void play() {
 		auto it = catalogoCanciones.find(cancionesCola.front());
 		if (!cancionesCola.empty()) {
+			//Si la cancion ya habia sido escuchada, eliminamos esa posicion en reproducidas y la volvemos a poner
+			if (it->second.itReproducidas != cancionesReproducidas.cend())
+				cancionesReproducidas.erase(it->second.itReproducidas);
+			//Anadimos la cancion a reproducidas con su iterador al principio
 			cancionesReproducidas.push_front(cancionesCola.front());
 			(*it).second.itReproducidas = cancionesReproducidas.begin();
 

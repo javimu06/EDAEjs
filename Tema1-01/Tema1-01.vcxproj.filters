@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Tema5-01-Parentesis Equilibrados-PlantillaJuezCasosIlimitados.cpp">
+    <ClCompile Include="Tema1-01-Los hermanos Dalton-PlantillaJuezCentinela.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
