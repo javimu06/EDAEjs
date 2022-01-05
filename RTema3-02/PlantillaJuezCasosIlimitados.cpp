@@ -26,22 +26,6 @@ void resolver(int m, int n, std::vector<char>& sol, std::vector<bool>& usadas, i
 			}
 		}
 	}
-	/*for (char c = 'a'; c < 'a' + m; ++c) {
-		if (!usadas[c - 'a']) {
-			sol[pos] = c;
-
-			if (pos == n - 1) {
-				for (int j = 0; j < n; j++)
-					std::cout << sol[j];
-				std::cout << "\n";
-			}
-			else {
-				usadas[c - 'a'] = true;
-				resolver(m, n, sol, usadas, pos + 1);
-				usadas[c - 'a'] = false;
-			}
-		}
-	}*/
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
