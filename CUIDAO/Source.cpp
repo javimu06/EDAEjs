@@ -72,4 +72,42 @@ Listas - LIST
 	Comando at permite manejar iteradores creo
 
 
-	*/
+
+- !No hacer un for de dimension .size de algo que hago pop porque se va reduciendo el .size y no imprimo todo
+-ITERADORES
+	Borrar un iterador
+	Es MUY IMPORTANTE acordarse de hacer it--; porque al borrar te devuelve el siguiente
+		it = sol.erase(it);
+		it--;
+
+
+-EJERCICIOS DE NODOS
+	Utilizar un nodo auxiliar para no modificar prim
+		Nodo* ant = prim
+
+	Borrar una cola
+		colegas.nelems = 0;
+		colegas.prim = nullptr;
+		colegas.ult = nullptr;
+
+-COSTES
+Operación			Lista desordenada			Lista ordenada basada en vectores
+Constructora		O(1)						O(1)
+insert				O(n)						O(n)
+erase				O(n)						O(n)
+contains			O(n)						O(log n)
+at					O(n)						O(log n)
+empty				O(1)						O(1)
+
+
+Operación			Árboles de búsqueda
+Constructora		O(1)
+insert				O(log n)
+count				O(log n)
+at					O(log n)
+erase				O(log n)
+empty				O(1)
+
+
+
+*/
