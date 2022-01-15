@@ -62,6 +62,9 @@ TEMA 5 TADS LINEALES
 Para recoger una frase en un string hay que hacer:
 	std::getline(std::cin, frase);		//Siendo frase un string
 
+No se puede crear ni destruir memoria dinamica -> TRABAJAR CON NODOS
+	
+
 Pilas - STACK
 	last in, first out. Es decir que se van apilando elementos y el ultimo que meto es el primero que saco.
 Colas - QUEUE
@@ -90,6 +93,17 @@ Listas - LIST
 		colegas.prim = nullptr;
 		colegas.ult = nullptr;
 
+
+TEMA 6 - ARBOLES
+	Para comprobar que la raiz o el nodo no es nulo
+		if (!nodo.empty())
+
+
+
+
+
+
+
 -COSTES
 Operación			Lista desordenada			Lista ordenada basada en vectores
 Constructora		O(1)						O(1)
@@ -109,5 +123,15 @@ erase				O(log n)
 empty				O(1)
 
 
+
+ARBOLES
+Operación					Complejidad
+Constructor sin argumentos	O(1)
+Constructor con argumentos	O(n)
+left						O(n)
+right						O(n)
+root						O(1)
+empty						O(1)
+operator==					O(n)
 
 */

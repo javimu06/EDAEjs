@@ -135,7 +135,6 @@ public:
 	}
 
 	void elim(int eliminado) {
-		// primero rompemos la circularidad
 		Nodo* act = this->fantasma->sig;
 		while (act != this->fantasma) {
 			if (eliminado == act->elem) {
