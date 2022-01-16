@@ -63,7 +63,7 @@ Para recoger una frase en un string hay que hacer:
 	std::getline(std::cin, frase);		//Siendo frase un string
 
 No se puede crear ni destruir memoria dinamica -> TRABAJAR CON NODOS
-	
+
 
 Pilas - STACK
 	last in, first out. Es decir que se van apilando elementos y el ultimo que meto es el primero que saco.
@@ -97,10 +97,18 @@ Listas - LIST
 TEMA 6 - ARBOLES
 	Para comprobar que la raiz o el nodo no es nulo
 		if (!nodo.empty())
+	Para contar alturas, tenemos las alturas de cada camino, que NO PASO POR & para que cuando llegue al final de cada arbol se ponga a 0 despues
+	Sin embargo maxAlturas si lo paso con & para guardarme el valor en todo el recorrido y sacar el resultante
+		Tengo un max alturas
+		int nAlturas = 0;
+		int maxnAlturas = 0;
+		cuentaAlturas(nAlturas,& maxnAlturas, tree);
+		return maxnAlturas;
 
+	Un numero es PRIMO si no es divisible entre ningun numero comprendido entre 1 y n/2
 
-
-
+	Cuando la solucion se da en la raiz hay que hacerlo POR COJONES por debajo
+	O mejor dicho cuando necesitas acceder a valores de sig->sig porque obviamente no puedes
 
 
 

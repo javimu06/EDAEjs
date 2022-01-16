@@ -6,14 +6,6 @@
 using namespace std;
 
 template <class T>
-int nodos(bintree<T> const& tree) {
-
-	int nNodos = 0;
-	cuentaNodos(nNodos, tree);
-	return nNodos;
-}
-
-template <class T>
 void cuentaNodos(int& nNodos, bintree<T> const& tree) {
 	if (!tree.empty()) {
 		nNodos++;
@@ -22,9 +14,53 @@ void cuentaNodos(int& nNodos, bintree<T> const& tree) {
 	}
 }
 
+template <class T>
+int nodos(bintree<T> const& tree) {
+
+	int nNodos = 0;
+	cuentaNodos(nNodos, tree);
+	return nNodos;
+}
 
 
+template<class T>
+void cuentaHojas(int& nHojas, bintree<T>const& tree) {
+	if (!tree.empty()) {
+		if (tree.left().empty() && tree.right().empty())
+			nHojas++;
+		else {
+			cuentaHojas(nHojas, tree.left());
+			cuentaHojas(nHojas, tree.right());
+		}
+	}
+}
 
+template<class T>
+int hojas(bintree<T> const& tree) {
+	int nHojas = 0;
+	cuentaHojas(nHojas, tree);
+	return nHojas;
+}
+
+template<class T>
+void cuentaAlturas(int nAlturas, int& maxnAlturas, bintree<T>const& tree) {
+	if (!tree.empty()) {
+		nAlturas++;
+		cuentaAlturas(nAlturas, maxnAlturas, tree.right());
+		cuentaAlturas(nAlturas, maxnAlturas, tree.left());
+	}
+	else
+		if (maxnAlturas < nAlturas) maxnAlturas = nAlturas;
+
+}
+
+template<class T>
+int altura(bintree<T>const& tree) {
+	int nAlturas = 0;
+	int maxnAlturas = 0;
+	cuentaAlturas(nAlturas, maxnAlturas, tree);
+	return maxnAlturas;
+}
 // Resuelve un caso de prueba, leyendo de la entrada la
 // configuración, y escribiendo la respuesta
 void resuelveCaso() {
@@ -32,8 +68,7 @@ void resuelveCaso() {
 	int n;
 	bintree<char> tree;
 	tree = leerArbol('.');
-	cout << nodos(tree) << "\n";
-	//cout << nodos(tree) << " " << hojas(tree) << " " << altura(tree) << endl;
+	cout << nodos(tree) << " " << hojas(tree) << " " << altura(tree) << "\n";
 }
 
 
