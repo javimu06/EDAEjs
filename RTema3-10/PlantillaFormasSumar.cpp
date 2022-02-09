@@ -22,7 +22,6 @@ void resolver(vector<vector<int>>& satisfaccionNinoRegalos, int& satisfaccion, v
 		//Si el juguete no estaba asignado
 		if (!juguetesAsignados[i]) {
 			//Lo asigno
-			juguetesAsignados[i] = true;
 			//Si hemos encontrado una posible solucion
 			if (posicion == sol.size() - 1) {
 				//Calculamos la satisfaccion obtenida con la solucion
@@ -31,9 +30,9 @@ void resolver(vector<vector<int>>& satisfaccionNinoRegalos, int& satisfaccion, v
 				if (satisfaccionEnd > satisfaccion)
 					satisfaccion = satisfaccionEnd;
 				//Desasignamos el ultimo juguete
-				juguetesAsignados[i] = false;
 			}
 			else {
+				juguetesAsignados[i] = true;
 				resolver(satisfaccionNinoRegalos, satisfaccion, juguetesAsignados, posicion + 1, satisfaccionEnd, sol);
 				juguetesAsignados[i] = false;
 			}

@@ -42,19 +42,19 @@ TEMA 3 BACKTRACKING
 	ASI SI
 	resolver(m, n, sol, usadas, pos + 1);
 	ASI NO
-	resolver(m, n, sol, usadas, pos++);
+	resolver(m, n, sol, usadas, pobbs++);
 	resolver(m, n, sol, usadas, ++pos);
 
 -A la hora de hacer marcaje tenemos que desmarcar despues de imprimir la solucion
-	if (esValida()) {
+	if (esValida(No  esta usada)) {
 		if (casoFinal) {
 
 			std::cout << solucion;
-			cantidad[i]++;
 		}
 		else {
+			usada[i] = true;
 			resolver(juguetes, nNinos, tipos, posicion + 1, sol, encontroSolucion, cantidad, satisfaccionJuguetes, satisf);
-			cantidad[i]++;
+			usada[i] = false;
 		}
 	}
 
@@ -112,6 +112,13 @@ TEMA 6 - ARBOLES
 
 
 
+TEMA 8 - APLICACIONES TADS
+	nombreMap.count()		//para saber si ya existia el primer valor
+	nombreMap[x]			//para acceder al segundo dato del map
+	nombreMap.at(x)			//NO SIRVE PARA UNA PUTA MIERDA ADEMAS ES CARO DE COJONES SUS MUERTO
+	-Excepciones
+		throw domain_error("Fecha ocupada");
+
 -COSTES
 Operación			Lista desordenada			Lista ordenada basada en vectores
 Constructora		O(1)						O(1)
@@ -122,7 +129,7 @@ at					O(n)						O(log n)
 empty				O(1)						O(1)
 
 
-Operación			Árboles de búsqueda
+Operación			Backtrackingc
 Constructora		O(1)
 insert				O(log n)
 count				O(log n)

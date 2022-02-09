@@ -10,7 +10,7 @@
 
 
 // función que resuelve el problema
-void resolver(int m, int n, std::vector<char>& sol, std::vector<bool>& usadas, int pos) {
+void resolver(int m, int n, std::vector<char>& sol, std::vector<bool> usadas, int pos) {
 	for (char c = 'a'; c < 'a' + m; ++c) {
 		if (!usadas[c - 'a']) {
 			sol[pos] = c;

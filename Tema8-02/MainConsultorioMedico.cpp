@@ -5,6 +5,7 @@
 #include <string>
 #include <stdexcept>
 #include <cassert>
+#include <fstream>
 
 #include <unordered_map>
 #include <map>
@@ -144,7 +145,21 @@ bool resuelve() {
 }
 
 int main() {
+
+	// ajuste para que cin extraiga directamente de un fichero
+#ifndef DOMJUDGE
+   // _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	std::ifstream in("datos.txt");
+	auto cinbuf = std::cin.rdbuf(in.rdbuf());
+#endif
+
 	while (resuelve());
 
+	// restablecimiento de cin
+#ifndef DOMJUDGE
+	std::cin.rdbuf(cinbuf);
+	//system("pause");
+#endif
 	return 0;
 }
+

@@ -51,10 +51,10 @@ public:
 			throw std::domain_error("Estado no encontrado");
 	}
 
-	Partido ganador_en(const Estado& estado) const {
+	Partido ganador_en(const Estado& estado) {
 		if (ListaEstados.count(estado) != 0)	//Ya existe el estado
 		{
-			return ListaEstados.at(estado).ganador;
+			return ListaEstados[estado].ganador;
 		}
 		else
 			throw std::domain_error("Estado no encontrado");
