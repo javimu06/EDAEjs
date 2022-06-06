@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{519FA229-FDCF-48A2-8B3B-814CF7774EB7}</ProjectGuid>
-    <RootNamespace>Tema207</RootNamespace>
+    <ProjectGuid>{C603D375-5494-4009-9B4E-08E11D158482}</ProjectGuid>
+    <RootNamespace>RRTema103</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -138,7 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Tema2-07-Obtener el minimo de un vector-PlantillaJuezCasosIlimitados.cpp" />
+    <ClCompile Include="PlantillaJuezNumeroCasos.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
