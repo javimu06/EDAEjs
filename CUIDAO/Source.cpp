@@ -20,13 +20,6 @@ O(n!)		factorial
 	No hemos visto ningun caso porque da timeLimit
 
 
-
-
-
-
-
-
-
 TEMA 1 DIVIDE Y VENCERAS
 	Los algoritmos son busquedas binarias
 -Pasar la recursion
@@ -57,6 +50,18 @@ TEMA 3 BACKTRACKING
 			usada[i] = false;
 		}
 	}
+
+TEMA 4 OPERADORES & RANDOM SHIT
+	friend std::istream& operator>>(std::istream& input, Pelicula& a);
+	friend std::ostream& operator<<(std::ostream& output, const Pelicula& a);
+
+	//GUARDAR UNA LINEA
+	std::getline(input, a.name);
+
+	//SORT
+	std::sort(peliculas.begin(), peliculas.end());
+}
+
 
 TEMA 5 TADS LINEALES
 Para recoger una frase en un string hay que hacer:
@@ -119,34 +124,11 @@ TEMA 8 - APLICACIONES TADS
 	-Excepciones
 		throw domain_error("Fecha ocupada");
 
--COSTES
-Operación			Lista desordenada			Lista ordenada basada en vectores
-Constructora		O(1)						O(1)
-insert				O(n)						O(n)
-erase				O(n)						O(n)
-contains			O(n)						O(log n)
-at					O(n)						O(log n)
-empty				O(1)						O(1)
 
 
-Operación			Backtrackingc
-Constructora		O(1)
-insert				O(log n)
-count				O(log n)
-at					O(log n)
-erase				O(log n)
-empty				O(1)
-
-
-
-ARBOLES
-Operación					Complejidad
-Constructor sin argumentos	O(1)
-Constructor con argumentos	O(n)
-left						O(n)
-right						O(n)
-root						O(1)
-empty						O(1)
-operator==					O(n)
+SOBRECARGA OPERADORES
+	<<	friend std::ostream& operator<<(std::ostream& out, const Date& d);
+	>>	friend std::istream& operator>>(std::istream& input, Date& d);
+	<	bool operator<(const Date& b) const;
 
 */

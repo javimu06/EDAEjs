@@ -10,7 +10,14 @@
 
 // función que resuelve el problema
 int resolver(const std::vector<int>& elementos0, const std::vector<int>& elementos1, int initPos, int endPos) {
+	if (initPos == endPos) {
+		return elementos0[initPos];
+	}
 
+	int medio = (initPos + endPos - 1) / 2;
+	if (medio == elementos0.size() - 1) return elementos0[medio];
+	if (elementos0[medio] == elementos1[medio]) return resolver(elementos0, elementos1, medio + 1, endPos);
+	else  return resolver(elementos0, elementos1, initPos, medio);
 }
 
 // Resuelve un caso de prueba, leyendo de la entrada la
