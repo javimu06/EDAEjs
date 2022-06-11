@@ -16,7 +16,6 @@
 
 #include <stdexcept>
 #include <cassert>
-
 #include <iostream>
 
 #include "deque_eda.h"
@@ -67,6 +66,7 @@ protected:
 		bool operator!=(Iterador const& that) const {
 			return !(*this == that);
 		}
+
 
 
 	private:
@@ -134,26 +134,22 @@ public:
 		return next;
 	}
 
-	void elim(int eliminado) {
+	void eliminaElemento(T& eliminado) {
 		Nodo* act = this->fantasma->sig;
 		while (act != this->fantasma) {
-			if (eliminado == act->elem) {
+			if (act->elem == eliminado) {
 				act->ant->sig = act->sig;
 				act->sig->ant = act->ant;
-				this->nelems--;
 			}
 			act = act->sig;
 		}
 	}
 
-	// escribir sol
 	void print() {
-		if (this->nelems) {
-			Nodo* act = this->fantasma->sig;
-			while (act != this->fantasma) {
-				std::cout << act->elem << " ";
-				act = act->sig;
-			}
+		Nodo* act = this->fantasma->sig;
+		while (act != this->fantasma) {
+			std::cout << act->elem << " ";
+			act = act->sig;
 		}
 		std::cout << "\n";
 	}
