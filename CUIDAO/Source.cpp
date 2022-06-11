@@ -98,6 +98,8 @@ Listas - LIST
 		colegas.prim = nullptr;
 		colegas.ult = nullptr;
 
+	Saber si has llegado al final de una queue 
+		while(act != ult)
 
 TEMA 6 - ARBOLES
 	Para comprobar que la raiz o el nodo no es nulo
