@@ -121,66 +121,19 @@ public:
 		return levels;
 	}
 
-	//!Declara s = 0 y lo pasa para ir sumando el numero de nodos
-	int nodos() {
-		int nNodos = 0;
-		cuentaNodos(raiz, nNodos);
-		return nNodos;
-	}
-
-	//!Va sumando los nodos que cuenta a s
-	void cuentaNodos(const Link node, int& nNodos) {
-		if (node != nullptr) {
-			cuentaNodos(node->left, nNodos);
-			cuentaNodos(node->right, nNodos);
-			nNodos++;
+	void calculaMinimo(Link a, T& minimo) {
+		if (a != nullptr) {
+			if (a->elem < minimo) minimo = a->elem;
+			calculaMinimo(a->left, minimo);
+			calculaMinimo(a->right, minimo);
 		}
 	}
 
-	//!Metodo que crea y devuelve un vector con cada una de las hojas
-	int hojas() {
-		int nHojas = 0;
-		cuentaHojas(raiz, nHojas);
-		return nHojas;
+	T devuelveMinimo() {
+		T minimo = raiz->elem;
+		calculaMinimo(raiz, minimo);
+		return minimo;
 	}
-
-	//!Rellena el vector de las hojas si son hojas
-	void cuentaHojas(const Link Node, int& nHojas) {
-		if (Node != nullptr) {
-			//!Si el nodo no tiene elementos a izquierda ni derecha, es porque es una hoja, la metemos en el vector
-			if (Node->left == nullptr && Node->right == nullptr)
-				nHojas++;
-			else {
-				//!Si no, comprobamos si alguna de sus hijas es hoja
-				cuentaHojas(Node->left, nHojas);
-				cuentaHojas(Node->right, nHojas);
-			}
-		}
-	}
-
-	//!Va sumando los caminos que cuenta a s y declara max para guardar el numero maximo de caminos que cuente
-	int camino() {
-		int nCaminos = 0;			//Cuenta los caminos por iteracion
-		int maxCamino = 0;			//Guarda el camino más largo, que seria la altura
-		cuentaCaminos(raiz, nCaminos, maxCamino);
-		return maxCamino;
-	}
-
-	//!Cuenta los caminos hasta que llega a un nodo nulo
-	void cuentaCaminos(const Link nodo, int nCaminos, int& maxCamino) {
-		//!Si el nodo no es nulo, aumenta s
-		if (nodo != nullptr) {
-			nCaminos++;
-			cuentaCaminos(nodo->left, nCaminos, maxCamino);
-			cuentaCaminos(nodo->right, nCaminos, maxCamino);
-		}
-		//!Si el nodo es nulo, comprueba si los caminos obtenidos para llegar a el son el numero maximo
-		else {
-			if (maxCamino < nCaminos) maxCamino = nCaminos;
-		}
-	}
-
-
 
 protected:
 	static void preorder(Link a, std::vector<T>& pre) {
@@ -286,7 +239,6 @@ public:
 
 // lee un árbol binario de la entrada estándar
 template <typename T>
-//!Se pasa un elemento vacio para comprobar si la raiz es vacia, la raiz es el primer elemento que lee
 inline bintree<T> leerArbol(T vacio) {
 	T raiz;
 	std::cin >> raiz;
@@ -299,4 +251,7 @@ inline bintree<T> leerArbol(T vacio) {
 		return { iz, raiz, dr };
 	}
 }
+
+
+
 #endif // bintree_eda_h
