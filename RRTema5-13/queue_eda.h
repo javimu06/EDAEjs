@@ -122,11 +122,11 @@ public:
 		Nodo* pringaoNode = nullptr;
 
 		while (act != ult->sig) {
-			
+
 			if (pringaoNode == nullptr && act->elem == pringao)
 				pringaoNode = act;
 
-			if (pringaoNode != nullptr && act->elem == afortunado) {
+			if (pringaoNode != nullptr && pringaoNode != act && act->elem == afortunado) {
 
 				if (act->sig == nullptr)
 					ult = ant;

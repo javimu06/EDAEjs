@@ -15,8 +15,10 @@ int resolver(const std::vector<int>& elementos, const int& initPos, const int& e
 
 	int medio = (initPos + endPos) / 2;
 	if (elementos[medio] % 2 != 0) return elementos[medio];
-	else if (elementos[medio] - elementos[initPos] < pow(2, medio - initPos)) return resolver(elementos, initPos, medio);
-	else return resolver(elementos, medio, endPos);
+	else if (elementos[medio] - elementos[initPos] < (medio - initPos) * 2)
+		return resolver(elementos, initPos, medio);
+	else
+		return resolver(elementos, medio, endPos);
 
 }
 

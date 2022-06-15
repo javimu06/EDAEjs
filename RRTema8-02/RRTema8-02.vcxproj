@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{7A8ABEAE-FA50-47C5-8524-F9B3B1C8E3D3}</ProjectGuid>
-    <RootNamespace>RRTema513</RootNamespace>
+    <ProjectGuid>{9FF385C4-5C23-47BD-8009-0DD18E1C4A98}</ProjectGuid>
+    <RootNamespace>RRTema802</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -138,10 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PlantillaJuezCasosIlimitados.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="queue_eda.h" />
+    <ClCompile Include="MainConsultorioMedico.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
